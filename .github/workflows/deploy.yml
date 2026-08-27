@@ -36,6 +36,11 @@ jobs:
           GITHUB_PAGES: 'true'
           NODE_OPTIONS: '--max-old-space-size=4096'
 
+      - name: Add .nojekyll and SPA fallback
+        run: |
+          touch out/.nojekyll
+          cp out/index.html out/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

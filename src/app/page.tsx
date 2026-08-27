@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Layout } from '@/components/Layout';
 import { PageHeader } from '@/components/Header';
 import { StatCard } from '@/components/StatCard';
@@ -23,6 +24,8 @@ function DashboardContent() {
     upcomingDeadlines: 0,
     completedThisMonth: 0,
   });
+
+  const router = useRouter();
 
   const loadData = () => {
     storage.initializeDefaults();
@@ -186,7 +189,7 @@ function DashboardContent() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Upcoming Deadlines</h3>
-              <Button variant="ghost" size="sm" onClick={() => window.location.href = '/deadlines'}>
+              <Button variant="ghost" size="sm" onClick={() => router.push('/deadlines')}>
                 View All
               </Button>
             </div>
@@ -201,7 +204,7 @@ function DashboardContent() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-gray-900">Overdue Obligations</h3>
-              <Button variant="ghost" size="sm" onClick={() => window.location.href = '/obligations'}>
+              <Button variant="ghost" size="sm" onClick={() => router.push('/obligations')}>
                 View All
               </Button>
             </div>
@@ -217,7 +220,7 @@ function DashboardContent() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-900">Recent Contracts</h3>
-            <Button variant="ghost" size="sm" onClick={() => window.location.href = '/contracts'}>
+              <Button variant="ghost" size="sm" onClick={() => router.push('/contracts')}>
               View All
             </Button>
           </div>
@@ -226,7 +229,7 @@ function DashboardContent() {
             data={recentContractsData}
             keyAccessor={c => c.id}
             emptyMessage="No contracts yet"
-            onRowClick={(c) => window.location.href = `/contracts/${c.id}`}
+            onRowClick={(c) => router.push('/contracts')}
           />
         </div>
       </div>

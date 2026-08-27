@@ -190,7 +190,6 @@ function ContractsContent() {
           data={contracts}
           keyAccessor={c => c.id}
           emptyMessage="No contracts yet. Create your first contract to get started."
-          onRowClick={(c) => window.location.href = `/contracts/${c.id}`}
         />
 
         <Modal
